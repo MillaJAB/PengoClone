@@ -25,8 +25,8 @@ function loadImages() {
 	var imageList = [
 		{varName: playerPic, theFile: "playerCharacter.png"},
 		{worldType: GROUND, theFile: "ground.png"},
+		{worldType: BOUNDARY, theFile: "temp_boundary.png"},
 		{worldType: WALL, theFile: "wall.png"},
-		{worldType: KEY, theFile: "key.png"},
 		{worldType: DOOR, theFile: "door.png"},
 		{worldType: CHALICE, theFile: "chalice.png"}
 	];
