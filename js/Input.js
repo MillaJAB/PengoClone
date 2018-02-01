@@ -2,6 +2,7 @@ const KEY_LEFT_ARROW = 37;
 const KEY_UP_ARROW = 38;
 const KEY_RIGHT_ARROW = 39;
 const KEY_DOWN_ARROW = 40;
+const SPACE_BAR = 32;
 
 var mouseX = 0;
 var mouseY = 0;
@@ -12,7 +13,7 @@ function setupInput() {
 	document.addEventListener('keydown', keyPressed);
 	document.addEventListener('keyup', keyReleased);
 
-	greenPlayer.setupInput(KEY_UP_ARROW, KEY_RIGHT_ARROW, KEY_DOWN_ARROW, KEY_LEFT_ARROW);
+	greenPlayer.setupInput(KEY_UP_ARROW, KEY_RIGHT_ARROW, KEY_DOWN_ARROW, KEY_LEFT_ARROW, SPACE_BAR);
 }
 
 function updateMousePos(evt) {
@@ -35,6 +36,9 @@ function keySet(keyEvent, whichPlayer, setTo) {
 	}
 	if (keyEvent.keyCode == whichPlayer.controlKeyDown) {
 		whichPlayer.keyHeld_Reverse = setTo;
+	}
+	if (keyEvent.keyCode == whichPlayer.controlKeySpace) {
+		whichPlayer.keyHeld_Push = setTo;
 	}
 }
 

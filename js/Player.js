@@ -12,17 +12,20 @@ function playerClass() {
 	this.keyHeld_Reverse = false;
 	this.keyHeld_TurnLeft = false;
 	this.keyHeld_TurnRight = false;
+	this.keyHeld_Push = false;
 
 	this.controlKeyUp;
 	this.controlKeyRight;
 	this.controlKeyDown;
 	this.controlKeyLeft;
+	this.controlKeySpace
 
-	this.setupInput = function(upKey, rightKey, downKey, leftKey) { // use this different notation when the function is a part of a class
+	this.setupInput = function(upKey, rightKey, downKey, leftKey, spaceKey) { // use this different notation when the function is a part of a class
 		this.controlKeyUp = upKey;
 		this.controlKeyRight = rightKey;
 		this.controlKeyDown = downKey;
 		this.controlKeyLeft = leftKey;
+		this.controlKeySpace = spaceKey;
 	}
 
 	this.reset = function(whichImage, playerName) {
@@ -59,6 +62,8 @@ function playerClass() {
 		}
 		if (this.keyHeld_TurnRight) {
 			nextX += PLAYER_SPEED;
+		} if (this.keyHeld_Push) {
+			console.log("Pushed block");
 		}
 
 		var walkIntoTileIndex = getTileType(nextX, nextY);
