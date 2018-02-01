@@ -62,8 +62,10 @@ function playerClass() {
 		}
 		if (this.keyHeld_TurnRight) {
 			nextX += PLAYER_SPEED;
-		} if (this.keyHeld_Push) {
+		}
+		if (this.keyHeld_Push) {
 			console.log("Pushed block");
+			pushBlock();
 		}
 
 		var walkIntoTileIndex = getTileType(nextX, nextY);
@@ -74,13 +76,16 @@ function playerClass() {
 		} else if (walkIntoTileIndex == GROUND  ) { // Only moves if there's ground ahead
 			this.x = nextX;
 			this.y = nextY;	
-		} else if (walkIntoTileIndex == DOOR) {
+		} else if (walkIntoTileIndex == WALL) {
+			console.log(worldGrid[giveIndexForObstacle(this.x, this.y, nextX, nextY)]);
+		}
+		/*} else if (walkIntoTileIndex == DOOR) {
 			if (keysOwned > 0) {
 				worldGrid[giveIndexForObstacle(this.x, this.y, nextX, nextY)] = GROUND;
 				keysOwned--;
 				console.log("You have " + keysOwned);
 			}
-		}
+		}*/
 	}
 
 	this.draw = function() {
