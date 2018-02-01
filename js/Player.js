@@ -49,19 +49,24 @@ function playerClass() {
 	this.move = function() {
 		var nextX = this.x;
 		var nextY = this.y;
+		var directionAugment = 0;
 
 		if (this.keyHeld_Gas) {
 			nextY -= PLAYER_SPEED;
+			directionAugment = -TILE_COLS;
 		}
 		if (this.keyHeld_Reverse) {
 			nextY += PLAYER_SPEED;
+			directionAugment = TILE_COLS;
 		}
 		
 		if (this.keyHeld_TurnLeft) {
 			nextX -= PLAYER_SPEED;
+			directionAugment = -1;
 		}
 		if (this.keyHeld_TurnRight) {
 			nextX += PLAYER_SPEED;
+			directionAugment = 1;
 		}
 		if (this.keyHeld_Push) {
 			console.log("Pushed block");
@@ -77,7 +82,12 @@ function playerClass() {
 			this.x = nextX;
 			this.y = nextY;	
 		} else if (walkIntoTileIndex == WALL) {
-			console.log(worldGrid[giveIndexForObstacle(this.x, this.y, nextX, nextY)]);
+			var emptyCheck = worldGrid[giveIndexForObstacle(this.x, this.y, nextX, nextY) + (directionAugment)];
+			if (emptyCheck != GROUND) {
+				console.log("It's not pushable");
+			} else {
+				console.log("It's pushable!");
+			}
 		}
 		/*} else if (walkIntoTileIndex == DOOR) {
 			if (keysOwned > 0) {
