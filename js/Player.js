@@ -69,11 +69,6 @@ function playerClass() {
 		} else if (walkIntoTileIndex == GROUND  ) { // Only moves if there's ground ahead
 			this.x = nextX;
 			this.y = nextY;	
-		} else if (walkIntoTileIndex == KEY) {
-			worldGrid[giveIndexForObstacle(this.x, this.y, nextX, nextY)] = GROUND;
-			drawWorlds();
-			keysOwned++;
-			console.log("You have " + keysOwned);
 		} else if (walkIntoTileIndex == DOOR) {
 			if (keysOwned > 0) {
 				worldGrid[giveIndexForObstacle(this.x, this.y, nextX, nextY)] = GROUND;
