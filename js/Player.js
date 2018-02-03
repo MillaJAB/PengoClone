@@ -1,5 +1,6 @@
 const PLAYER_SPEED = 5;
 var keysOwned = 0;
+var pushAllowed = false;
 
 function playerClass() {
 
@@ -69,7 +70,6 @@ function playerClass() {
 			directionAugment = 1;
 		}
 		if (this.keyHeld_Push) {
-			console.log("Pushed block");
 			pushBlock();
 		}
 
@@ -84,9 +84,9 @@ function playerClass() {
 		} else if (walkIntoTileIndex == WALL) {
 			var emptyCheck = worldGrid[giveIndexForObstacle(this.x, this.y, nextX, nextY) + (directionAugment)];
 			if (emptyCheck != GROUND) {
-				console.log("It's not pushable");
+				pushAllowed = false;
 			} else {
-				console.log("It's pushable!");
+				pushAllowed = true;
 			}
 		}
 		/*} else if (walkIntoTileIndex == DOOR) {
@@ -125,3 +125,9 @@ function giveIndexForObstacle(currentX, currentY, nextX, nextY) {
 // BUG: When going diagonal, multiple keys get picked up
 // BUG: A wall got removed at one point instead of the door
 // BUG: Need to reset number of keys owned to zero on reset
+
+function pushBlock() {
+	if (pushAllowed) {
+		console.log("fuck yes");
+	}
+}
