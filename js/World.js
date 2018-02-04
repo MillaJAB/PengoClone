@@ -59,7 +59,7 @@ function getTileType(currentX, currentY) {
 		return tileHere;
 	}
 
-	return WORLD_WALL;
+	return WALL; // Changed from WORLD_WALL to fix exception, not sure if that messed anything up
 } // end of playerWorldHandling();
 
 function rowColToArrayIndex(col, row) {

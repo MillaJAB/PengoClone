@@ -69,15 +69,19 @@ function playerClass() {
 			nextX += PLAYER_SPEED;
 			directionAugment = 1;
 		}
+
+		//this.x = senseCharacterBoundaries(this.x, this.y);
+
 		if (this.keyHeld_Push) {
 			//if direction I'm facing is has a wall in the next space AND the space behind that is empty
 			pushBlock();
 
 		}
-		console.log(directionAugment);
-
 
 		var walkIntoTileIndex = getTileType(nextX, nextY);
+		if (getTileType(nextX + 25, nextY) == WALL) {
+			console.log("wait");
+		} // I think this needs to get wrapped into the GROUND nextX check
 
 		if (walkIntoTileIndex == CHALICE) {
 			console.log(player.name + " You WIN. Good jerb.");
@@ -104,6 +108,13 @@ function playerClass() {
 
 	this.draw = function() {
 		drawBitmapCenteredWithRotation(this.myPlayerPic, this.x, this.y, this.ang);
+	}
+
+	function senseCharacterBoundaries(x, y) {
+		var rightSensor = x + TILE_W/2;
+		if (getTileType(rightSensor, y) == WALL) {
+			return (x - 24);
+		}
 	}
 }
 
