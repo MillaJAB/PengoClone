@@ -1,6 +1,7 @@
 const PLAYER_SPEED = 5;
 var keysOwned = 0;
 var pushAllowed = false;
+var directionAugment = 0;
 
 function playerClass() {
 
@@ -50,7 +51,6 @@ function playerClass() {
 	this.move = function() {
 		var nextX = this.x;
 		var nextY = this.y;
-		var directionAugment = 0;
 
 		if (this.keyHeld_Gas) {
 			nextY -= PLAYER_SPEED;
@@ -70,8 +70,12 @@ function playerClass() {
 			directionAugment = 1;
 		}
 		if (this.keyHeld_Push) {
+			//if direction I'm facing is has a wall in the next space AND the space behind that is empty
 			pushBlock();
+
 		}
+		console.log(directionAugment);
+
 
 		var walkIntoTileIndex = getTileType(nextX, nextY);
 
