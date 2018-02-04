@@ -88,9 +88,11 @@ function playerClass() {
 		if (walkIntoTileIndex == CHALICE) {
 			console.log(player.name + " You WIN. Good jerb.");
 			loadLevel(levelOne);	
-		} else if (walkIntoTileIndex == GROUND &&
-			getTileType(nextX + 24, nextY) != WALL &&
-			getTileType(nextX - 24, nextY) != WALL) { // Only moves if there's ground ahead
+		} else if (walkIntoTileIndex == GROUND && // Only moves if there's ground ahead
+			getTileType(nextX + (TILE_W/2 - 1), nextY) != WALL && // Keeps right moving player from overlapping wall
+			getTileType(nextX - (TILE_W/2 - 1), nextY) != WALL && // Keeps left moving player from overlapping wall
+			getTileType(nextX, nextY + (TILE_H/2 - 1)) != WALL && // Keeps downward moving player from overlapping wall
+			getTileType(nextX, nextY - (TILE_H/2 - 1)) != WALL) { 
 			this.x = nextX;
 			this.y = nextY;	
 		} else if (walkIntoTileIndex == WALL) {
