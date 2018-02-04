@@ -92,7 +92,7 @@ function playerClass() {
 			getTileType(nextX + (TILE_W/2 - 1), nextY) != WALL && // Keeps right moving player from overlapping wall
 			getTileType(nextX - (TILE_W/2 - 1), nextY) != WALL && // Keeps left moving player from overlapping wall
 			getTileType(nextX, nextY + (TILE_H/2 - 1)) != WALL && // Keeps downward moving player from overlapping wall
-			getTileType(nextX, nextY - (TILE_H/2 - 1)) != WALL) { 
+			getTileType(nextX, nextY - (TILE_H/2 - 1)) != WALL) { // Keeps upward moving player from overlapping wall
 			this.x = nextX;
 			this.y = nextY;	
 		} else if (walkIntoTileIndex == WALL) {
