@@ -13,7 +13,7 @@ function setupInput() {
 	document.addEventListener('keydown', keyPressed);
 	document.addEventListener('keyup', keyReleased);
 
-	greenPlayer.setupInput(KEY_UP_ARROW, KEY_RIGHT_ARROW, KEY_DOWN_ARROW, KEY_LEFT_ARROW, SPACE_BAR);
+	player.setupInput(KEY_UP_ARROW, KEY_RIGHT_ARROW, KEY_DOWN_ARROW, KEY_LEFT_ARROW, SPACE_BAR);
 }
 
 function updateMousePos(evt) {
@@ -44,10 +44,10 @@ function keySet(keyEvent, whichPlayer, setTo) {
 
 function keyPressed(evt) {
 	//console.log("Key pressed: " + evt.keyCode);
-	keySet(evt, greenPlayer, true);
+	keySet(evt, player, true);
 }
 
 function keyReleased(evt) {
-	keySet(evt, greenPlayer, false);
+	keySet(evt, player, false);
 	// console.log("Key released: " + evt.keyCode);
 }

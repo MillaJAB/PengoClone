@@ -1,5 +1,5 @@
 var canvas, canvasContext;
-var greenPlayer = new playerClass();
+var player = new playerClass();
 
 window.onload = function() {
 	canvas = document.getElementById('gameCanvas');
@@ -22,7 +22,7 @@ function imageLoadingDoneSoStartGame() {
 
 function loadLevel(whichLevel) {
 	worldGrid = whichLevel.slice(); // Copies levelOne grid to the empty world grid
-	greenPlayer.reset(playerPic, "Sabot Keenblade");
+	player.reset(playerPic, "Sabot Keenblade");
 }
 
 function updateAll() {
@@ -31,10 +31,10 @@ function updateAll() {
 }
 
 function moveAll() {
-	greenPlayer.move();
+	player.move();
 }
 	
 function drawAll() {
 	drawWorlds();
-	greenPlayer.draw();
+	player.draw();
 }

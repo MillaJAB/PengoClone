@@ -76,7 +76,7 @@ function playerClass() {
 		var walkIntoTileIndex = getTileType(nextX, nextY);
 
 		if (walkIntoTileIndex == CHALICE) {
-			console.log(greenPlayer.name + " You WIN. Good jerb.");
+			console.log(player.name + " You WIN. Good jerb.");
 			loadLevel(levelOne);	
 		} else if (walkIntoTileIndex == GROUND  ) { // Only moves if there's ground ahead
 			this.x = nextX;
