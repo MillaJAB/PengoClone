@@ -69,24 +69,28 @@ function playerClass() {
 			nextX += PLAYER_SPEED;
 			directionAugment = 1;
 		}
+		var walkIntoTileIndex = getTileType(nextX, nextY);
 
 		//this.x = senseCharacterBoundaries(this.x, this.y);
 
 		if (this.keyHeld_Push) {
+			console.log(walkIntoTileIndex);
+
 			//if direction I'm facing is has a wall in the next space AND the space behind that is empty
 			pushBlock();
 
 		}
 
-		var walkIntoTileIndex = getTileType(nextX, nextY);
 		if (getTileType(nextX + 25, nextY) == WALL) {
-			console.log("wait");
+			
 		} // I think this needs to get wrapped into the GROUND nextX check
 
 		if (walkIntoTileIndex == CHALICE) {
 			console.log(player.name + " You WIN. Good jerb.");
 			loadLevel(levelOne);	
-		} else if (walkIntoTileIndex == GROUND  ) { // Only moves if there's ground ahead
+		} else if (walkIntoTileIndex == GROUND &&
+			getTileType(nextX + 24, nextY) != WALL &&
+			getTileType(nextX - 24, nextY) != WALL) { // Only moves if there's ground ahead
 			this.x = nextX;
 			this.y = nextY;	
 		} else if (walkIntoTileIndex == WALL) {
@@ -138,11 +142,9 @@ function giveIndexForObstacle(currentX, currentY, nextX, nextY) {
 }
 
 // BUG: When going diagonal, multiple keys get picked up
-// BUG: A wall got removed at one point instead of the door
-// BUG: Need to reset number of keys owned to zero on reset
 
 function pushBlock() {
 	if (pushAllowed) {
-		console.log("fuck yes");
+		console.log("push is allowed and pushBlock called");
 	}
 }
