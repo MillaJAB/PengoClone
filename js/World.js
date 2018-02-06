@@ -8,7 +8,7 @@ var levelOne = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
 				 1, 0, 3, 0, 3, 3, 3, 0, 3, 3, 3, 0, 3, 0, 1,
 				 1, 0, 3, 0, 0, 0, 0, 0, 3, 0, 0, 0, 3, 0, 1,
 				 1, 0, 3, 3, 3, 3, 3, 3, 3, 0, 3, 3, 3, 0, 1,
-				 1, 0, 3, 0, 0, 0, 0, 0, 0, 0, 3, 0, 3, 0, 1,
+				 1, 4, 3, 0, 0, 0, 0, 0, 0, 0, 3, 0, 3, 0, 1,
 				 1, 0, 3, 0, 3, 3, 3, 3, 3, 3, 3, 0, 3, 0, 1,
 				 1, 0, 3, 0, 0, 0, 3, 2, 0, 0, 3, 0, 3, 0, 1,
 				 1, 0, 3, 3, 3, 0, 3, 3, 3, 0, 3, 0, 3, 0, 1,
@@ -28,12 +28,11 @@ const GROUND = 0;
 const BOUNDARY = 1;
 const PLAYERSTART = 2;
 const WALL = 3;
-const DOOR = 4;
+const ENEMY = 4;
 const CHALICE = 5;
 
 function tileWithTransparency(checkTileType) {
-	return (checkTileType == DOOR ||
-			checkTileType == CHALICE);
+	return (checkTileType == CHALICE);
 }
 
 function returnTileTypeAtColRow(col, row) {
@@ -42,7 +41,7 @@ function returnTileTypeAtColRow(col, row) {
 		var worldIndexUnderCoord = rowColToArrayIndex(col, row);
 		return worldGrid[worldIndexUnderCoord];
 	} else {
-		return WORLD_WALL;
+		return WALL;
 	}
 }
 

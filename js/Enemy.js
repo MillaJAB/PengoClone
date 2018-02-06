@@ -29,14 +29,14 @@ function enemyClass() {
 		this.controlKeySpace = spaceKey;
 	}
 
-	this.reset = function(whichImage, enemyName) {
+	this.reset = function(someImage, enemyName) {
 		this.enemyName = enemyName;
-		this.myPlayerPic = whichImage;
+		this.enemyPic = someImage;
 
 		for (var eachRow = 0; eachRow < TILE_ROWS; eachRow++) {
 			for(var eachCol=0; eachCol<TILE_COLS;eachCol++) {
 				var arrayIndex = rowColToArrayIndex(eachCol, eachRow);
-				if (worldGrid[arrayIndex] == PLAYERSTART) {
+				if (worldGrid[arrayIndex] == ENEMY) {
 					worldGrid[arrayIndex] = GROUND;
 					this.x = eachCol * TILE_W + TILE_W/2;
 					this.y = eachRow * TILE_H + TILE_H/2;
@@ -44,7 +44,7 @@ function enemyClass() {
 				} // end of player start if
 			} // end of col for
 		} // end of row for
-		console.log("NO PLAYER START FOUND!");
+		console.log("NO ENEMY START FOUND!");
 	} // end of playerReset func
 
 	this.move = function() {
@@ -52,20 +52,20 @@ function enemyClass() {
 		var nextY = this.y;
 
 		if (this.keyHeld_Gas) {
-			nextY -= PLAYER_SPEED;
+			nextY -= ENEMY_SPEED;
 			directionAugment = -TILE_COLS;
 		}
 		if (this.keyHeld_Reverse) {
-			nextY += PLAYER_SPEED;
+			nextY += ENEMY_SPEED;
 			directionAugment = TILE_COLS;
 		}
 		
 		if (this.keyHeld_TurnLeft) {
-			nextX -= PLAYER_SPEED;
+			nextX -= ENEMY_SPEED;
 			directionAugment = -1;
 		}
 		if (this.keyHeld_TurnRight) {
-			nextX += PLAYER_SPEED;
+			nextX += ENEMY_SPEED;
 			directionAugment = 1;
 		}
 		var walkIntoTileIndex = getTileType(nextX, nextY);
@@ -83,7 +83,7 @@ function enemyClass() {
 		} // I think this needs to get wrapped into the GROUND nextX check
 
 		if (walkIntoTileIndex == CHALICE) {
-			console.log(player.name + " You WIN. Good jerb.");
+			console.log(enemy.name + " You WIN. Good jerb.");
 			loadLevel(levelOne);	
 		} else if (walkIntoTileIndex == GROUND && // Only moves if there's ground ahead
 			getTileType(nextX + (TILE_W/2 - 1), nextY) != WALL && // Keeps right moving player from overlapping wall
@@ -110,7 +110,7 @@ function enemyClass() {
 	}
 
 	this.draw = function() {
-		drawBitmapCenteredWithRotation(this.myPlayerPic, this.x, this.y, this.ang);
+		drawBitmapCenteredWithRotation(this.enemyPic, this.x, this.y, this.ang);
 	}
 
 	function senseCharacterBoundaries(x, y) {

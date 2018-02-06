@@ -27,7 +27,7 @@ function loadImages() {
 		{worldType: GROUND, theFile: "ground.png"},
 		{worldType: BOUNDARY, theFile: "temp_boundary.png"},
 		{worldType: WALL, theFile: "wall.png"},
-		{worldType: DOOR, theFile: "door.png"},
+		{worldType: ENEMY, theFile: "key.png"},
 		{worldType: CHALICE, theFile: "chalice.png"}
 	];
 

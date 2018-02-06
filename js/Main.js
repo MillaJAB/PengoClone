@@ -24,6 +24,7 @@ function imageLoadingDoneSoStartGame() {
 function loadLevel(whichLevel) {
 	worldGrid = whichLevel.slice(); // Copies levelOne grid to the empty world grid
 	player.reset(playerPic, "Sabot Keenblade");
+	enemy.reset(enemyPic, "Key of Doom");
 }
 
 function updateAll() {
@@ -33,9 +34,11 @@ function updateAll() {
 
 function moveAll() {
 	player.move();
+	enemy.move();
 }
 	
 function drawAll() {
 	drawWorlds();
 	player.draw();
+	//enemy.draw();
 }
