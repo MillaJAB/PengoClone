@@ -1,14 +1,13 @@
-const PLAYER_SPEED = 5;
-var keysOwned = 0;
+const ENEMY_SPEED = 5;
 var pushAllowed = false;
 var directionAugment = 0;
 
-function playerClass() {
+function enemyClass() {
 
 	this.x = 75;
 	this.y = 75;
-	this.myPlayerPic; // which picture to use
-	this.name = "Untitled Player";
+	this.enemyPic; // which picture to use
+	this.enemyName = "Untitled Enemy";
 
 	this.keyHeld_Gas = false;
 	this.keyHeld_Reverse = false;
@@ -30,8 +29,8 @@ function playerClass() {
 		this.controlKeySpace = spaceKey;
 	}
 
-	this.reset = function(whichImage, playerName) {
-		this.name = playerName;
+	this.reset = function(whichImage, enemyName) {
+		this.enemyName = enemyName;
 		this.myPlayerPic = whichImage;
 
 		for (var eachRow = 0; eachRow < TILE_ROWS; eachRow++) {

@@ -1,5 +1,6 @@
 var canvas, canvasContext;
 var player = new playerClass();
+var enemy = new enemyClass();
 
 window.onload = function() {
 	canvas = document.getElementById('gameCanvas');
