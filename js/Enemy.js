@@ -6,7 +6,7 @@ function enemyClass() {
 
 	this.x = 75;
 	this.y = 75;
-	this.enemyPic; // which picture to use
+	this.myEnemyPic; // which picture to use
 	this.enemyName = "Untitled Enemy";
 
 	this.keyHeld_Gas = false;
@@ -36,7 +36,7 @@ function enemyClass() {
 		for (var eachRow = 0; eachRow < TILE_ROWS; eachRow++) {
 			for(var eachCol=0; eachCol<TILE_COLS;eachCol++) {
 				var arrayIndex = rowColToArrayIndex(eachCol, eachRow);
-				if (worldGrid[arrayIndex] == ENEMY) {
+				if (worldGrid[arrayIndex] == ENEMYSTART) {
 					worldGrid[arrayIndex] = GROUND;
 					this.x = eachCol * TILE_W + TILE_W/2;
 					this.y = eachRow * TILE_H + TILE_H/2;
@@ -67,6 +67,10 @@ function enemyClass() {
 		if (this.keyHeld_TurnRight) {
 			nextX += ENEMY_SPEED;
 			directionAugment = 1;
+		}
+
+		if (player.x > this.x) {
+			console.log("this is working");
 		}
 		var walkIntoTileIndex = getTileType(nextX, nextY);
 
@@ -110,7 +114,7 @@ function enemyClass() {
 	}
 
 	this.draw = function() {
-		drawBitmapCenteredWithRotation(this.enemyPic, this.x, this.y, this.ang);
+		drawBitmapCenteredWithRotation(this.myEnemyPic, this.x, this.y, this.ang);
 	}
 
 	function senseCharacterBoundaries(x, y) {

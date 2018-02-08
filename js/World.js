@@ -28,7 +28,7 @@ const GROUND = 0;
 const BOUNDARY = 1;
 const PLAYERSTART = 2;
 const WALL = 3;
-const ENEMY = 4;
+const ENEMYSTART = 4;
 const CHALICE = 5;
 
 function tileWithTransparency(checkTileType) {
