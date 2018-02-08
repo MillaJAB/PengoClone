@@ -1,4 +1,5 @@
 var playerPic = document.createElement("img");
+var enemyPic = document.createElement("img");
 var worldPics = [];
 
 var picsToLoad = 0; // set automatically based on imageList in loadImages()
@@ -24,10 +25,11 @@ function loadImageForWorldCode(worldCode, fileName) {
 function loadImages() {
 	var imageList = [
 		{varName: playerPic, theFile: "playerCharacter.png"},
+		{varName: enemyPic, theFile: "key.png"},
+
 		{worldType: GROUND, theFile: "ground.png"},
 		{worldType: BOUNDARY, theFile: "temp_boundary.png"},
 		{worldType: WALL, theFile: "wall.png"},
-		{worldType: ENEMY, theFile: "key.png"},
 		{worldType: CHALICE, theFile: "chalice.png"}
 	];
 
