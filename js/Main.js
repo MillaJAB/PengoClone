@@ -40,5 +40,5 @@ function moveAll() {
 function drawAll() {
 	drawWorlds();
 	player.draw();
-	//enemy.draw();
+	enemy.draw();
 }

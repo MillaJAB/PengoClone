@@ -29,9 +29,9 @@ function enemyClass() {
 		this.controlKeySpace = spaceKey;
 	}
 
-	this.reset = function(someImage, enemyName) {
-		this.enemyName = enemyName;
-		this.enemyPic = someImage;
+	this.reset = function(someImage, setEnemyName) {
+		this.enemyName = setEnemyName;
+		this.myEnemyPic = someImage;
 
 		for (var eachRow = 0; eachRow < TILE_ROWS; eachRow++) {
 			for(var eachCol=0; eachCol<TILE_COLS;eachCol++) {
